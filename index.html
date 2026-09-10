@@ -1,103 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Python Algorithm Visualizer</title>
+    <title>Learning Algorithms with Visualizations</title>
+
+    <link rel="stylesheet" href="./style.css">
 
     <link
-        rel="stylesheet"
-        href="https://pyscript.net/releases/2026.7.3/core.css"
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
     >
 
-    <script
-        type="module"
-        src="https://pyscript.net/releases/2026.7.3/core.js">
-    </script>
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 40px;
-        }
-
-        button {
-            padding: 10px 18px;
-            margin: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        #array {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin: 30px;
-        }
-
-        .box {
-            width: 55px;
-            height: 55px;
-            border: 2px solid black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        #status {
-            font-size: 20px;
-            margin: 20px;
-        }
-
-        #code {
-            width: 700px;
-            margin: 30px auto;
-            padding: 20px;
-            background: #f4f4f4;
-            text-align: left;
-            white-space: pre;
-            font-family: monospace;
-        }
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet"
+    >
 </head>
 
 <body>
 
-    <h1>Python Algorithm Visualizer</h1>
+    <nav class="navbar">
 
-    <button id="linear-button">
-        Linear Search
-    </button>
+        <a href="index.html" class="logo">
+            <span class="logo-mark">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
 
-    <button id="binary-button">
-        Binary Search
-    </button>
+            <span>Learning Algorithms with Visualizations</span>
+        </a>
 
-    <div id="array"></div>
+        <span class="nav-caption">
+            Learn algorithms visually
+        </span>
 
-    <p>
-        Target:
-        <strong id="target">42</strong>
-    </p>
+    </nav>
 
-    <button id="start-button">
-        Start Animation
-    </button>
 
-    <div id="status">
-        Select an algorithm.
-    </div>
+    <main class="home-container">
 
-    <div id="code"></div>
+        <section class="hero-section">
 
-    <script
-        type="py"
-        src="./main.py">
-    </script>
+            <div class="hero-badge">
+                <span></span>
+                Interactive DSA Learning
+            </div>
+
+            <h1>
+                Understand algorithms.<br>
+                <em>Don't just memorize them.</em>
+            </h1>
+
+            <p>
+                Explore algorithms step by step through animations,
+                complexity graphs, and interactive visualizations.
+            </p>
+
+        </section>
+
+
+        <section class="topic-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">CHOOSE A TOPIC</span>
+
+                    <h2>
+                        What would you like to learn?
+                    </h2>
+                </div>
+
+                <span class="topic-count">
+                    02 topics
+                </span>
+
+            </div>
+
+
+            <div class="topic-grid">
+
+
+                <!-- SEARCHING -->
+
+                <a
+                    href="searching.html"
+                    class="topic-card searching-card"
+                >
+
+                    <div class="topic-card-top">
+
+                        <span class="topic-number">
+                            01
+                        </span>
+
+                        <span class="topic-arrow">
+                            ↗
+                        </span>
+
+                    </div>
+
+
+                    <div class="topic-illustration searching-illustration">
+
+                        <span class="search-bar"></span>
+
+                        <span class="search-box box-one">4</span>
+                        <span class="search-box box-two">8</span>
+                        <span class="search-box box-three">15</span>
+                        <span class="search-box box-four">42</span>
+                        <span class="search-box box-five">67</span>
+
+                    </div>
+
+
+                    <div class="topic-content">
+
+                        <span class="topic-label">
+                            SEARCHING
+                        </span>
+
+                        <h3>
+                            Searching Algorithms
+                        </h3>
+
+                        <p>
+                            Learn how algorithms find a specific
+                            value inside a collection of data.
+                        </p>
+
+                        <div class="topic-footer">
+
+                            <span>
+                                4 algorithms
+                            </span>
+
+                            <strong>
+                                Explore →
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- SORTING -->
+
+                <a
+                    href="sorting.html"
+                    class="topic-card sorting-card"
+                >
+
+                    <div class="topic-card-top">
+
+                        <span class="topic-number">
+                            02
+                        </span>
+
+                        <span class="topic-arrow">
+                            ↗
+                        </span>
+
+                    </div>
+
+
+                    <div class="topic-illustration sorting-illustration">
+
+                        <span style="height: 35%"></span>
+                        <span style="height: 60%"></span>
+                        <span style="height: 45%"></span>
+                        <span style="height: 85%"></span>
+                        <span style="height: 70%"></span>
+                        <span style="height: 52%"></span>
+
+                    </div>
+
+
+                    <div class="topic-content">
+
+                        <span class="topic-label">
+                            SORTING
+                        </span>
+
+                        <h3>
+                            Sorting Algorithms
+                        </h3>
+
+                        <p>
+                            Discover how algorithms rearrange data
+                            into an ordered sequence.
+                        </p>
+
+                        <div class="topic-footer">
+
+                            <span>
+                                6 algorithms
+                            </span>
+
+                            <strong>
+                                Explore →
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <section class="learning-note">
+
+            <div class="note-icon">
+                ✦
+            </div>
+
+            <div>
+                <strong>
+                    Learn by doing
+                </strong>
+
+                <p>
+                    Change the input size, slow down the animation,
+                    and watch the algorithm make every decision.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        AlgoViz · Interactive Algorithm Learning
+    </footer>
 
 </body>
-
 </html>
