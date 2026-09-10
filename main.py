@@ -1,49 +1,264 @@
-import math
-
-from pyscript import window
-from pyodide.ffi import create_proxy
+from pyscript import document
+import asyncio
 
 
-# Get canvas
-canvas = window.document.getElementById("canvas")
-ctx = canvas.getContext("2d")
+# --------------------------------
+# DATA
+# --------------------------------
 
-# Animation variable
-t = 0
+array = [4, 8, 15, 23, 42, 67, 91]
+target = 42
+
+current_algorithm = "linear"
 
 
-def animate(timestamp):
-    global t
+# --------------------------------
+# HTML ELEMENTS
+# --------------------------------
 
-    # Clear canvas
-    ctx.clearRect(0, 0, 800, 400)
+array_element = document.querySelector("#array")
+status_element = document.querySelector("#status")
+code_element = document.querySelector("#code")
 
-    # Calculate position
-    x = 400 + 200 * math.cos(t)
-    y = 200 + 100 * math.sin(t)
 
-    # Draw circle
-    ctx.beginPath()
-    ctx.arc(
-        x,
-        y,
-        20,
-        0,
-        2 * math.pi
+# --------------------------------
+# DISPLAY ARRAY
+# --------------------------------
+
+def display_array():
+
+    array_element.innerHTML = ""
+
+    for value in array:
+
+        box = document.createElement("div")
+
+        box.className = "box"
+        box.innerText = str(value)
+
+        array_element.appendChild(box)
+
+
+# --------------------------------
+# SHOW CODE
+# --------------------------------
+
+def show_linear_code():
+
+    code_element.innerText = """def linear_search(array, target):
+
+    for i in range(len(array)):
+
+        if array[i] == target:
+            return i
+
+    return -1
+"""
+
+
+def show_binary_code():
+
+    code_element.innerText = """def binary_search(array, target):
+
+    left = 0
+    right = len(array) - 1
+
+    while left <= right:
+
+        mid = (left + right) // 2
+
+        if array[mid] == target:
+            return mid
+
+        elif array[mid] < target:
+            left = mid + 1
+
+        else:
+            right = mid - 1
+
+    return -1
+"""
+
+
+# --------------------------------
+# LINEAR SEARCH
+# --------------------------------
+
+async def linear_search():
+
+    display_array()
+
+    boxes = document.querySelectorAll(".box")
+
+    comparisons = 0
+
+    for i in range(len(array)):
+
+        comparisons += 1
+
+        boxes[i].style.backgroundColor = "yellow"
+
+        status_element.innerText = (
+            f"Checking index {i} → {array[i]} "
+            f"| Comparisons: {comparisons}"
+        )
+
+        await asyncio.sleep(0.8)
+
+        if array[i] == target:
+
+            boxes[i].style.backgroundColor = "lightgreen"
+
+            status_element.innerText = (
+                f"Found {target} at index {i}! "
+                f"| Comparisons: {comparisons}"
+            )
+
+            return
+
+        boxes[i].style.backgroundColor = "lightgray"
+
+    status_element.innerText = (
+        f"{target} not found."
     )
 
-    ctx.fillStyle = "red"
-    ctx.fill()
 
-    # Move animation
-    t += 0.03
+# --------------------------------
+# BINARY SEARCH
+# --------------------------------
 
-    # Schedule next frame
-    window.requestAnimationFrame(animation_proxy)
+async def binary_search():
+
+    display_array()
+
+    boxes = document.querySelectorAll(".box")
+
+    left = 0
+    right = len(array) - 1
+
+    comparisons = 0
+
+    while left <= right:
+
+        # Reset colors
+        for box in boxes:
+            box.style.backgroundColor = "white"
+
+        mid = (left + right) // 2
+
+        comparisons += 1
+
+        boxes[mid].style.backgroundColor = "yellow"
+
+        status_element.innerText = (
+            f"Checking middle index {mid} → {array[mid]} "
+            f"| Comparisons: {comparisons}"
+        )
+
+        await asyncio.sleep(1)
+
+        if array[mid] == target:
+
+            boxes[mid].style.backgroundColor = "lightgreen"
+
+            status_element.innerText = (
+                f"Found {target} at index {mid}! "
+                f"| Comparisons: {comparisons}"
+            )
+
+            return
+
+        elif array[mid] < target:
+
+            for i in range(left, mid + 1):
+                boxes[i].style.backgroundColor = "lightgray"
+
+            left = mid + 1
+
+        else:
+
+            for i in range(mid, right + 1):
+                boxes[i].style.backgroundColor = "lightgray"
+
+            right = mid - 1
+
+        await asyncio.sleep(0.8)
+
+    status_element.innerText = (
+        f"{target} not found."
+    )
 
 
-# Create a persistent JavaScript callback
-animation_proxy = create_proxy(animate)
+# --------------------------------
+# BUTTONS
+# --------------------------------
 
-# Start animation
-window.requestAnimationFrame(animation_proxy)
+def select_linear(event):
+
+    global current_algorithm
+
+    current_algorithm = "linear"
+
+    show_linear_code()
+
+    status_element.innerText = (
+        "Linear Search selected."
+    )
+
+
+def select_binary(event):
+
+    global current_algorithm
+
+    current_algorithm = "binary"
+
+    show_binary_code()
+
+    status_element.innerText = (
+        "Binary Search selected."
+    )
+
+
+async def start(event):
+
+    if current_algorithm == "linear":
+
+        await linear_search()
+
+    else:
+
+        await binary_search()
+
+
+# --------------------------------
+# CONNECT BUTTONS
+# --------------------------------
+
+document.querySelector(
+    "#linear-button"
+).addEventListener(
+    "click",
+    select_linear
+)
+
+
+document.querySelector(
+    "#binary-button"
+).addEventListener(
+    "click",
+    select_binary
+)
+
+
+document.querySelector(
+    "#start-button"
+).addEventListener(
+    "click",
+    start
+)
+
+
+# Initial display
+
+display_array()
+show_linear_code()
