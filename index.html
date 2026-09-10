@@ -1,253 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>Learning Algorithms with Visualizations</title>
+<title>All Things Python</title>
 
-    <link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="style.css">
 
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet"
-    >
+<script
+    type="module"
+    src="https://pyscript.net/releases/2026.7.3/core.js">
+</script>
 </head>
 
 <body>
 
-    <nav class="navbar">
+<header class="navbar">
 
-        <a href="index.html" class="logo">
-            <span class="logo-mark">
-                <i></i>
-                <i></i>
-                <i></i>
-            </span>
+    <div class="nav-inner">
 
-            <span>Learning Algorithms with Visualizations</span>
-        </a>
+        <button
+            class="logo"
+            onclick="showHome()">
+            All Things Python
+        </button>
 
-        <span class="nav-caption">
-            Learn algorithms visually
+        <span class="author">
+            Laxman Basumatary
         </span>
 
-    </nav>
+    </div>
 
+</header>
 
-    <main class="home-container">
 
-        <section class="hero-section">
+<main class="container">
 
-            <div class="hero-badge">
-                <span></span>
-                Interactive DSA Learning
-            </div>
+<!-- ========================================================
+     HOME
+========================================================= -->
 
-            <h1>
-                Understand algorithms.<br>
-                <em>Don't just memorize them.</em>
-            </h1>
+<section id="home-view">
 
-            <p>
-                Explore algorithms step by step through animations,
-                complexity graphs, and interactive visualizations.
-            </p>
+    <div class="hero">
 
-        </section>
+        <span class="eyebrow">
+            LEARN • EXPLORE • PRACTICE
+        </span>
 
+        <h1>
+            Python for<br>
+            Statistical Learning
+        </h1>
 
-        <section class="topic-section">
+        <p>
+            Learn basic Python, NumPy, Pandas, and statistics
+            through simple interactive examples.
+        </p>
 
-            <div class="section-heading">
+    </div>
 
-                <div>
-                    <span class="eyebrow">CHOOSE A TOPIC</span>
 
-                    <h2>
-                        What would you like to learn?
-                    </h2>
-                </div>
+    <div class="topic-grid">
 
-                <span class="topic-count">
-                    02 topics
-                </span>
+        <button
+            class="topic-card"
+            onclick="openTopic('python')">
 
-            </div>
-
-
-            <div class="topic-grid">
-
-
-                <!-- SEARCHING -->
-
-                <a
-                    href="searching.html"
-                    class="topic-card searching-card"
-                >
-
-                    <div class="topic-card-top">
-
-                        <span class="topic-number">
-                            01
-                        </span>
-
-                        <span class="topic-arrow">
-                            ↗
-                        </span>
-
-                    </div>
-
-
-                    <div class="topic-illustration searching-illustration">
-
-                        <span class="search-bar"></span>
-
-                        <span class="search-box box-one">4</span>
-                        <span class="search-box box-two">8</span>
-                        <span class="search-box box-three">15</span>
-                        <span class="search-box box-four">42</span>
-                        <span class="search-box box-five">67</span>
-
-                    </div>
-
-
-                    <div class="topic-content">
-
-                        <span class="topic-label">
-                            SEARCHING
-                        </span>
-
-                        <h3>
-                            Searching Algorithms
-                        </h3>
-
-                        <p>
-                            Learn how algorithms find a specific
-                            value inside a collection of data.
-                        </p>
-
-                        <div class="topic-footer">
-
-                            <span>
-                                4 algorithms
-                            </span>
-
-                            <strong>
-                                Explore →
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-                </a>
-
-
-                <!-- SORTING -->
-
-                <a
-                    href="sorting.html"
-                    class="topic-card sorting-card"
-                >
-
-                    <div class="topic-card-top">
-
-                        <span class="topic-number">
-                            02
-                        </span>
-
-                        <span class="topic-arrow">
-                            ↗
-                        </span>
-
-                    </div>
-
-
-                    <div class="topic-illustration sorting-illustration">
-
-                        <span style="height: 35%"></span>
-                        <span style="height: 60%"></span>
-                        <span style="height: 45%"></span>
-                        <span style="height: 85%"></span>
-                        <span style="height: 70%"></span>
-                        <span style="height: 52%"></span>
-
-                    </div>
-
-
-                    <div class="topic-content">
-
-                        <span class="topic-label">
-                            SORTING
-                        </span>
-
-                        <h3>
-                            Sorting Algorithms
-                        </h3>
-
-                        <p>
-                            Discover how algorithms rearrange data
-                            into an ordered sequence.
-                        </p>
-
-                        <div class="topic-footer">
-
-                            <span>
-                                6 algorithms
-                            </span>
-
-                            <strong>
-                                Explore →
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <section class="learning-note">
-
-            <div class="note-icon">
-                ✦
+            <div class="topic-icon">
+                🐍
             </div>
 
             <div>
-                <strong>
-                    Learn by doing
-                </strong>
+
+                <h2>
+                    Python Basics
+                </h2>
 
                 <p>
-                    Change the input size, slow down the animation,
-                    and watch the algorithm make every decision.
+                    Variables, lists, loops,
+                    conditions, and functions.
                 </p>
+
             </div>
 
-        </section>
+            <span class="arrow">
+                →
+            </span>
 
-    </main>
+        </button>
 
 
-    <footer>
-        AlgoViz · Interactive Algorithm Learning
-    </footer>
+        <button
+            class="topic-card"
+            onclick="openTopic('numpy')">
+
+            <div class="topic-icon">
+                🔢
+            </div>
+
+            <div>
+
+                <h2>
+                    NumPy
+                </h2>
+
+                <p>
+                    Arrays, indexing, shape,
+                    and numerical calculations.
+                </p>
+
+            </div>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </button>
+
+
+        <button
+            class="topic-card"
+            onclick="openTopic('pandas')">
+
+            <div class="topic-icon">
+                📊
+            </div>
+
+            <div>
+
+                <h2>
+                    Pandas
+                </h2>
+
+                <p>
+                    DataFrames, columns, filtering,
+                    and data summaries.
+                </p>
+
+            </div>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </button>
+
+
+        <button
+            class="topic-card"
+            onclick="openTopic('statistics')">
+
+            <div class="topic-icon">
+                📈
+            </div>
+
+            <div>
+
+                <h2>
+                    Statistical Learning
+                </h2>
+
+                <p>
+                    Mean, variance, correlation,
+                    and simple regression.
+                </p>
+
+            </div>
+
+            <span class="arrow">
+                →
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <div class="learning-path">
+
+        <span>
+            LEARNING PATH
+        </span>
+
+        <div class="path">
+
+            <div class="path-step">
+                <strong>01</strong>
+                Python
+            </div>
+
+            <div class="path-line"></div>
+
+            <div class="path-step">
+                <strong>02</strong>
+                NumPy
+            </div>
+
+            <div class="path-line"></div>
+
+            <div class="path-step">
+                <strong>03</strong>
+                Pandas
+            </div>
+
+            <div class="path-line"></div>
+
+            <div class="path-step">
+                <strong>04</strong>
+                Statistics
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================
+     TOPIC
+========================================================= -->
+
+<section
+    id="topic-view"
+    class="hidden">
+
+    <button
+        class="back-btn"
+        onclick="showHome()">
+
+        ← Back to topics
+
+    </button>
+
+
+    <div class="page-heading">
+
+        <span
+            class="eyebrow"
+            id="topic-label">
+        </span>
+
+        <h1
+            id="topic-title">
+        </h1>
+
+        <p
+            id="topic-description">
+        </p>
+
+    </div>
+
+
+    <div
+        class="lesson-grid"
+        id="lesson-grid">
+    </div>
+
+</section>
+
+
+<!-- ========================================================
+     LESSON
+========================================================= -->
+
+<section
+    id="lesson-view"
+    class="hidden">
+
+    <button
+        class="back-btn"
+        onclick="backToTopic()">
+
+        ← Back
+
+    </button>
+
+
+    <div class="lesson-header">
+
+        <span
+            class="eyebrow"
+            id="lesson-category">
+        </span>
+
+        <h1
+            id="lesson-title">
+        </h1>
+
+        <p
+            id="lesson-intro">
+        </p>
+
+    </div>
+
+
+    <div class="lesson-layout">
+
+
+        <div class="lesson-main">
+
+
+            <!-- WHAT IS IT -->
+
+            <div class="panel">
+
+                <h2>
+                    What is it?
+                </h2>
+
+                <p id="lesson-explanation">
+                </p>
+
+            </div>
+
+
+            <!-- CODE -->
+
+            <div class="panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="small-label">
+                            EXAMPLE
+                        </span>
+
+                        <h2>
+                            Python Code
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        class="primary-btn"
+                        onclick="runExample()">
+
+                        ▶ Run Example
+
+                    </button>
+
+                </div>
+
+
+                <div class="code-editor">
+
+                    <textarea
+                        id="lesson-code"
+                        spellcheck="false">
+                    </textarea>
+
+                </div>
+
+
+                <div class="output-box">
+
+                    <div class="output-label">
+                        OUTPUT
+                    </div>
+
+                    <pre id="lesson-output">Run the example to see the output.</pre>
+
+                </div>
+
+            </div>
+
+
+            <!-- ANIMATION -->
+
+            <div class="panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="small-label">
+                            ANIMATION
+                        </span>
+
+                        <h2>
+                            Watch it happen
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        class="primary-btn"
+                        onclick="startPythonAnimation()">
+
+                        ▶ Animate
+
+                    </button>
+
+                </div>
+
+
+                <div id="animation-area">
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="lesson-sidebar">
+
+
+            <div class="panel key-points">
+
+                <span class="small-label">
+                    KEY IDEA
+                </span>
+
+                <h3>
+                    Remember
+                </h3>
+
+                <p id="lesson-key">
+                </p>
+
+            </div>
+
+
+            <div class="panel next-panel">
+
+                <span class="small-label">
+                    NEXT LESSON
+                </span>
+
+                <h3 id="next-title">
+                </h3>
+
+                <button
+                    class="secondary-btn"
+                    id="next-button"
+                    onclick="nextLesson()">
+
+                    Continue →
+
+                </button>
+
+            </div>
+
+
+        </aside>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div>
+
+        <strong>
+            All Things Python
+        </strong>
+
+        <span>
+            Python for Statistical Learning
+        </span>
+
+    </div>
+
+
+    <div>
+        Author: Laxman Basumatary
+    </div>
+
+</footer>
+
+
+<!-- ========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="app.js"></script>
+
+
+<!-- ========================================================
+     PYSCRIPT + NUMPY + PANDAS
+========================================================= -->
+
+<script
+    type="py"
+    src="app.py"
+    config='{"packages":["numpy","pandas"]}'>
+</script>
+
 
 </body>
 </html>
