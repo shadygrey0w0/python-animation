@@ -1,10 +1,12 @@
-from pyscript import document
 import asyncio
 
+from pyscript import document
+from pyodide.ffi import create_proxy
 
-# --------------------------------
+
+# ==========================================
 # DATA
-# --------------------------------
+# ==========================================
 
 array = [4, 8, 15, 23, 42, 67, 91]
 target = 42
@@ -12,18 +14,18 @@ target = 42
 current_algorithm = "linear"
 
 
-# --------------------------------
-# HTML ELEMENTS
-# --------------------------------
+# ==========================================
+# GET HTML ELEMENTS
+# ==========================================
 
 array_element = document.querySelector("#array")
 status_element = document.querySelector("#status")
 code_element = document.querySelector("#code")
 
 
-# --------------------------------
+# ==========================================
 # DISPLAY ARRAY
-# --------------------------------
+# ==========================================
 
 def display_array():
 
@@ -39,9 +41,9 @@ def display_array():
         array_element.appendChild(box)
 
 
-# --------------------------------
-# SHOW CODE
-# --------------------------------
+# ==========================================
+# SHOW LINEAR SEARCH CODE
+# ==========================================
 
 def show_linear_code():
 
@@ -55,6 +57,10 @@ def show_linear_code():
     return -1
 """
 
+
+# ==========================================
+# SHOW BINARY SEARCH CODE
+# ==========================================
 
 def show_binary_code():
 
@@ -80,9 +86,9 @@ def show_binary_code():
 """
 
 
-# --------------------------------
+# ==========================================
 # LINEAR SEARCH
-# --------------------------------
+# ==========================================
 
 async def linear_search():
 
@@ -118,14 +124,15 @@ async def linear_search():
 
         boxes[i].style.backgroundColor = "lightgray"
 
+
     status_element.innerText = (
         f"{target} not found."
     )
 
 
-# --------------------------------
+# ==========================================
 # BINARY SEARCH
-# --------------------------------
+# ==========================================
 
 async def binary_search():
 
@@ -184,14 +191,15 @@ async def binary_search():
 
         await asyncio.sleep(0.8)
 
+
     status_element.innerText = (
         f"{target} not found."
     )
 
 
-# --------------------------------
-# BUTTONS
-# --------------------------------
+# ==========================================
+# BUTTON FUNCTIONS
+# ==========================================
 
 def select_linear(event):
 
@@ -202,7 +210,7 @@ def select_linear(event):
     show_linear_code()
 
     status_element.innerText = (
-        "Linear Search selected."
+        "Linear Search selected. Click Start Animation."
     )
 
 
@@ -215,30 +223,45 @@ def select_binary(event):
     show_binary_code()
 
     status_element.innerText = (
-        "Binary Search selected."
+        "Binary Search selected. Click Start Animation."
     )
 
 
-async def start(event):
+def start_animation(event):
 
     if current_algorithm == "linear":
 
-        await linear_search()
+        asyncio.ensure_future(
+            linear_search()
+        )
 
     else:
 
-        await binary_search()
+        asyncio.ensure_future(
+            binary_search()
+        )
 
 
-# --------------------------------
+# ==========================================
+# CREATE JAVASCRIPT CALLBACKS
+# ==========================================
+
+linear_proxy = create_proxy(select_linear)
+
+binary_proxy = create_proxy(select_binary)
+
+start_proxy = create_proxy(start_animation)
+
+
+# ==========================================
 # CONNECT BUTTONS
-# --------------------------------
+# ==========================================
 
 document.querySelector(
     "#linear-button"
 ).addEventListener(
     "click",
-    select_linear
+    linear_proxy
 )
 
 
@@ -246,7 +269,7 @@ document.querySelector(
     "#binary-button"
 ).addEventListener(
     "click",
-    select_binary
+    binary_proxy
 )
 
 
@@ -254,11 +277,18 @@ document.querySelector(
     "#start-button"
 ).addEventListener(
     "click",
-    start
+    start_proxy
 )
 
 
-# Initial display
+# ==========================================
+# INITIAL STATE
+# ==========================================
 
 display_array()
+
 show_linear_code()
+
+status_element.innerText = (
+    "Linear Search selected. Click Start Animation."
+)
