@@ -1,508 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Statistical Learning Quiz</title>
 
-<title>All Things Python</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-<link rel="stylesheet" href="style.css">
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eff0f0;
+            color: #202945;
+        }
 
-<script
-    type="module"
-    src="https://pyscript.net/releases/2026.7.3/core.js">
-</script>
+        .quiz-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .question {
+            background: white;
+            border: 1px solid #d2dce5;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .question h2 {
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 18px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            border: 1px solid #d2dce5;
+            background: #fff;
+            padding: 13px 16px;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 15px;
+        }
+
+        .option:hover {
+            background: #eff0f0;
+        }
+
+        .option.correct {
+            background: #dff2e1;
+            border-color: #4c9a5f;
+            color: #246331;
+        }
+
+        .option.wrong {
+            background: #f8dddd;
+            border-color: #c95757;
+            color: #8b2222;
+        }
+
+        .option.disabled {
+            cursor: default;
+        }
+
+        .feedback {
+            margin-top: 14px;
+            font-weight: bold;
+            min-height: 22px;
+        }
+
+        .correct-text {
+            color: #246331;
+        }
+
+        .wrong-text {
+            color: #8b2222;
+        }
+
+        .score {
+            background: #202945;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 25px;
+            font-size: 18px;
+        }
+
+        .reset-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 11px 22px;
+            border: none;
+            border-radius: 6px;
+            background: #202945;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .reset-btn:hover {
+            background: #2c3758;
+        }
+    </style>
 </head>
 
 <body>
 
-<header class="navbar">
+<div class="quiz-container">
 
-    <div class="nav-inner">
+    <h1>Python for Statistical Learning</h1>
 
-        <button
-            class="logo"
-            onclick="showHome()">
-            All Things Python
-        </button>
+    <p class="subtitle">
+        Python Basics, NumPy and Pandas
+    </p>
 
-        <span class="author">
-            Laxman Basumatary
-        </span>
+    <!-- Question 1 -->
+    <div class="question" data-answer="B">
 
-    </div>
+        <h2>1. Which Python data type is used to store True or False?</h2>
 
-</header>
-
-
-<main class="container">
-
-<!-- ========================================================
-     HOME
-========================================================= -->
-
-<section id="home-view">
-
-    <div class="hero">
-
-        <span class="eyebrow">
-            LEARN • EXPLORE • PRACTICE
-        </span>
-
-        <h1>
-            Python for<br>
-            Statistical Learning
-        </h1>
-
-        <p>
-            Learn basic Python, NumPy, Pandas, and statistics
-            through simple interactive examples.
-        </p>
-
-    </div>
-
-
-    <div class="topic-grid">
-
-        <button
-            class="topic-card"
-            onclick="openTopic('python')">
-
-            <div class="topic-icon">
-                🐍
-            </div>
-
-            <div>
-
-                <h2>
-                    Python Basics
-                </h2>
-
-                <p>
-                    Variables, lists, loops,
-                    conditions, and functions.
-                </p>
-
-            </div>
-
-            <span class="arrow">
-                →
-            </span>
-
-        </button>
-
-
-        <button
-            class="topic-card"
-            onclick="openTopic('numpy')">
-
-            <div class="topic-icon">
-                🔢
-            </div>
-
-            <div>
-
-                <h2>
-                    NumPy
-                </h2>
-
-                <p>
-                    Arrays, indexing, shape,
-                    and numerical calculations.
-                </p>
-
-            </div>
-
-            <span class="arrow">
-                →
-            </span>
-
-        </button>
-
-
-        <button
-            class="topic-card"
-            onclick="openTopic('pandas')">
-
-            <div class="topic-icon">
-                📊
-            </div>
-
-            <div>
-
-                <h2>
-                    Pandas
-                </h2>
-
-                <p>
-                    DataFrames, columns, filtering,
-                    and data summaries.
-                </p>
-
-            </div>
-
-            <span class="arrow">
-                →
-            </span>
-
-        </button>
-
-
-        <button
-            class="topic-card"
-            onclick="openTopic('statistics')">
-
-            <div class="topic-icon">
-                📈
-            </div>
-
-            <div>
-
-                <h2>
-                    Statistical Learning
-                </h2>
-
-                <p>
-                    Mean, variance, correlation,
-                    and simple regression.
-                </p>
-
-            </div>
-
-            <span class="arrow">
-                →
-            </span>
-
-        </button>
-
-    </div>
-
-
-    <div class="learning-path">
-
-        <span>
-            LEARNING PATH
-        </span>
-
-        <div class="path">
-
-            <div class="path-step">
-                <strong>01</strong>
-                Python
-            </div>
-
-            <div class="path-line"></div>
-
-            <div class="path-step">
-                <strong>02</strong>
-                NumPy
-            </div>
-
-            <div class="path-line"></div>
-
-            <div class="path-step">
-                <strong>03</strong>
-                Pandas
-            </div>
-
-            <div class="path-line"></div>
-
-            <div class="path-step">
-                <strong>04</strong>
-                Statistics
-            </div>
-
+        <div class="options">
+            <div class="option" data-value="A">A. int</div>
+            <div class="option" data-value="B">B. bool</div>
+            <div class="option" data-value="C">C. float</div>
+            <div class="option" data-value="D">D. str</div>
         </div>
 
-    </div>
-
-</section>
-
-
-<!-- ========================================================
-     TOPIC
-========================================================= -->
-
-<section
-    id="topic-view"
-    class="hidden">
-
-    <button
-        class="back-btn"
-        onclick="showHome()">
-
-        ← Back to topics
-
-    </button>
-
-
-    <div class="page-heading">
-
-        <span
-            class="eyebrow"
-            id="topic-label">
-        </span>
-
-        <h1
-            id="topic-title">
-        </h1>
-
-        <p
-            id="topic-description">
-        </p>
+        <div class="feedback"></div>
 
     </div>
 
 
-    <div
-        class="lesson-grid"
-        id="lesson-grid">
-    </div>
-
-</section>
-
-
-<!-- ========================================================
-     LESSON
-========================================================= -->
-
-<section
-    id="lesson-view"
-    class="hidden">
-
-    <button
-        class="back-btn"
-        onclick="backToTopic()">
-
-        ← Back
-
-    </button>
-
-
-    <div class="lesson-header">
-
-        <span
-            class="eyebrow"
-            id="lesson-category">
-        </span>
-
-        <h1
-            id="lesson-title">
-        </h1>
-
-        <p
-            id="lesson-intro">
-        </p>
-
-    </div>
-
-
-    <div class="lesson-layout">
-
-
-        <div class="lesson-main">
-
-
-            <!-- WHAT IS IT -->
-
-            <div class="panel">
-
-                <h2>
-                    What is it?
-                </h2>
-
-                <p id="lesson-explanation">
-                </p>
-
-            </div>
-
-
-            <!-- CODE -->
-
-            <div class="panel">
-
-                <div class="panel-heading">
-
-                    <div>
-
-                        <span class="small-label">
-                            EXAMPLE
-                        </span>
-
-                        <h2>
-                            Python Code
-                        </h2>
-
-                    </div>
-
-
-                    <button
-                        class="primary-btn"
-                        onclick="runExample()">
-
-                        ▶ Run Example
-
-                    </button>
-
-                </div>
-
-
-                <div class="code-editor">
-
-                    <textarea
-                        id="lesson-code"
-                        spellcheck="false">
-                    </textarea>
-
-                </div>
-
-
-                <div class="output-box">
-
-                    <div class="output-label">
-                        OUTPUT
-                    </div>
-
-                    <pre id="lesson-output">Run the example to see the output.</pre>
-
-                </div>
-
-            </div>
-
-
-            <!-- ANIMATION -->
-
-            <div class="panel">
-
-                <div class="panel-heading">
-
-                    <div>
-
-                        <span class="small-label">
-                            ANIMATION
-                        </span>
-
-                        <h2>
-                            Watch it happen
-                        </h2>
-
-                    </div>
-
-
-                    <button
-                        class="primary-btn"
-                        onclick="startPythonAnimation()">
-
-                        ▶ Animate
-
-                    </button>
-
-                </div>
-
-
-                <div id="animation-area">
-                </div>
-
-            </div>
-
-
+    <!-- Question 2 -->
+    <div class="question" data-answer="C">
+
+        <h2>2. Which NumPy attribute returns the dimensions of an array?</h2>
+
+        <div class="options">
+            <div class="option" data-value="A">A. size</div>
+            <div class="option" data-value="B">B. shape</div>
+            <div class="option" data-value="C">C. ndim</div>
+            <div class="option" data-value="D">D. dimension</div>
         </div>
 
-
-        <!-- SIDEBAR -->
-
-        <aside class="lesson-sidebar">
-
-
-            <div class="panel key-points">
-
-                <span class="small-label">
-                    KEY IDEA
-                </span>
-
-                <h3>
-                    Remember
-                </h3>
-
-                <p id="lesson-key">
-                </p>
-
-            </div>
-
-
-            <div class="panel next-panel">
-
-                <span class="small-label">
-                    NEXT LESSON
-                </span>
-
-                <h3 id="next-title">
-                </h3>
-
-                <button
-                    class="secondary-btn"
-                    id="next-button"
-                    onclick="nextLesson()">
-
-                    Continue →
-
-                </button>
-
-            </div>
-
-
-        </aside>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- ========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-
-    <div>
-
-        <strong>
-            All Things Python
-        </strong>
-
-        <span>
-            Python for Statistical Learning
-        </span>
+        <div class="feedback"></div>
 
     </div>
 
 
-    <div>
-        Author: Laxman Basumatary
+    <!-- Question 3 -->
+    <div class="question" data-answer="A">
+
+        <h2>3. What is the result of the following NumPy operation?</h2>
+
+        <pre><code>x = np.array([1, 2, 3])
+x * 2</code></pre>
+
+        <div class="options">
+            <div class="option" data-value="A">A. [2, 4, 6]</div>
+            <div class="option" data-value="B">B. [1, 4, 9]</div>
+            <div class="option" data-value="C">C. [3, 4, 5]</div>
+            <div class="option" data-value="D">D. [1, 2, 3, 2]</div>
+        </div>
+
+        <div class="feedback"></div>
+
     </div>
 
-</footer>
+
+    <!-- Question 4 -->
+    <div class="question" data-answer="D">
+
+        <h2>4. Which Pandas object represents a two-dimensional labeled table?</h2>
+
+        <div class="options">
+            <div class="option" data-value="A">A. List</div>
+            <div class="option" data-value="B">B. Tuple</div>
+            <div class="option" data-value="C">C. Series</div>
+            <div class="option" data-value="D">D. DataFrame</div>
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
 
 
-<!-- ========================================================
-     JAVASCRIPT
-========================================================= -->
+    <!-- Question 5 -->
+    <div class="question" data-answer="B">
 
-<script src="app.js"></script>
+        <h2>5. Which Pandas operation calculates the average score for each department?</h2>
+
+        <pre><code>df.groupby("department")["score"]._____()</code></pre>
+
+        <div class="options">
+            <div class="option" data-value="A">A. sum</div>
+            <div class="option" data-value="B">B. mean</div>
+            <div class="option" data-value="C">C. max</div>
+            <div class="option" data-value="D">D. count</div>
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
 
 
-<!-- ========================================================
-     PYSCRIPT + NUMPY + PANDAS
-========================================================= -->
+    <div class="score" id="score">
+        Score: 0 / 5
+    </div>
 
-<script
-    type="py"
-    src="app.py"
-    config='{"packages":["numpy","pandas"]}'>
+    <button class="reset-btn" id="reset">
+        Reset Quiz
+    </button>
+
+</div>
+
+
+<script>
+
+    const questions = document.querySelectorAll(".question");
+    const scoreDisplay = document.getElementById("score");
+    const resetButton = document.getElementById("reset");
+
+    let score = 0;
+    let answered = 0;
+
+
+    questions.forEach(question => {
+
+        const correctAnswer = question.dataset.answer;
+        const options = question.querySelectorAll(".option");
+        const feedback = question.querySelector(".feedback");
+
+        options.forEach(option => {
+
+            option.addEventListener("click", () => {
+
+                // Prevent answering the same question twice
+                if (question.dataset.answered === "true") {
+                    return;
+                }
+
+                question.dataset.answered = "true";
+                answered++;
+
+                const selected = option.dataset.value;
+
+                // Disable all options
+                options.forEach(item => {
+                    item.classList.add("disabled");
+                });
+
+
+                if (selected === correctAnswer) {
+
+                    option.classList.add("correct");
+
+                    feedback.textContent = "✓ Correct!";
+                    feedback.className = "feedback correct-text";
+
+                    score++;
+
+                } else {
+
+                    option.classList.add("wrong");
+
+                    feedback.textContent = "✗ Wrong!";
+
+                    feedback.className = "feedback wrong-text";
+
+                    // Highlight the correct answer
+                    options.forEach(item => {
+
+                        if (item.dataset.value === correctAnswer) {
+                            item.classList.add("correct");
+                        }
+
+                    });
+
+                }
+
+                updateScore();
+
+            });
+
+        });
+
+    });
+
+
+    function updateScore() {
+
+        scoreDisplay.textContent =
+            `Score: ${score} / ${questions.length}`;
+
+        if (answered === questions.length) {
+
+            if (score === questions.length) {
+                scoreDisplay.textContent =
+                    `Excellent! ${score} / ${questions.length}`;
+            }
+
+            else if (score >= 3) {
+                scoreDisplay.textContent =
+                    `Good job! ${score} / ${questions.length}`;
+            }
+
+            else {
+                scoreDisplay.textContent =
+                    `Keep practicing! ${score} / ${questions.length}`;
+            }
+        }
+    }
+
+
+    resetButton.addEventListener("click", () => {
+
+        score = 0;
+        answered = 0;
+
+        questions.forEach(question => {
+
+            question.dataset.answered = "false";
+
+            const options =
+                question.querySelectorAll(".option");
+
+            const feedback =
+                question.querySelector(".feedback");
+
+            options.forEach(option => {
+
+                option.classList.remove(
+                    "correct",
+                    "wrong",
+                    "disabled"
+                );
+
+            });
+
+            feedback.textContent = "";
+            feedback.className = "feedback";
+
+        });
+
+        updateScore();
+
+    });
+
 </script>
-
 
 </body>
 </html>
