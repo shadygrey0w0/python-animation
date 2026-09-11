@@ -85,7 +85,7 @@ async def execute_python():
     code = editor.value
 
     if not code.strip():
-        set_output("Write some Python code first.")
+        set_output("Write some Python code erertert first.")
         return
 
     set_output("Running...")
