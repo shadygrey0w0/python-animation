@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Statistical Learning Quiz</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eff0f0;
+            color: #202945;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .question {
+            background: white;
+            border: 1px solid #d2dce5;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .question h2 {
+            font-size: 18px;
+            margin-top: 0;
+            margin-bottom: 18px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            border: 1px solid #d2dce5;
+            background: #fff;
+            padding: 13px 16px;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 15px;
+        }
+
+        .option:hover {
+            background: #eff0f0;
+        }
+
+        .option.correct {
+            background: #dff2e1;
+            border-color: #4c9a5f;
+            color: #246331;
+        }
+
+        .option.wrong {
+            background: #f8dddd;
+            border-color: #c95757;
+            color: #8b2222;
+        }
+
+        .option.disabled {
+            cursor: default;
+        }
+
+        .feedback {
+            margin-top: 14px;
+            font-weight: bold;
+            min-height: 22px;
+        }
+
+        .correct-text {
+            color: #246331;
+        }
+
+        .wrong-text {
+            color: #8b2222;
+        }
+
+        .score {
+            background: #202945;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 25px;
+            font-size: 18px;
+        }
+
+        .reset-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 11px 22px;
+            border: none;
+            border-radius: 6px;
+            background: #202945;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .reset-btn:hover {
+            background: #2c3758;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <h1>Python for Statistical Learning</h1>
+
+    <p class="subtitle">
+        Python Basics, NumPy and Pandas
+    </p>
+
+    <!-- Question 1 -->
+    <div class="question" data-answer="B">
+
+        <h2>1. Which Python data type is used to store True or False?</h2>
+
+        <div class="options">
+            <div class="option" data-value="A">A. int</div>
+            <div class="option" data-value="B">B. bool</div>
+            <div class="option" data-value="C">C. float</div>
+            <div class="option" data-value="D">D. str</div>
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
+
+
+    <!-- Question 2 -->
+    <div class="question" data-answer="C">
+
+        <h2>2. Which NumPy attribute returns the dimensions of an array?</h2>
+
+        <div class="options">
+            <div class="option" data-value="A">A. size</div>
+            <div class="option" data-value="B">B. shape</div>
+            <div class="option" data-value="C">C. ndim</div>
+            <div class="option" data-value="D">D. dimension</div>
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
+
+
+    <!-- Question 3 -->
+    <div class="question" data-answer="A">
+
+        <h2>3. What is the result of the following NumPy operation?</h2>
+
+        <pre><code>x = np.array([1, 2, 3])
+x * 2</code></pre>
+
+        <div class="options">
+            <div class="option" data-value="A">A. [2, 4, 6]</div>
+            <div class="option" data-value="B">B. [1, 4, 9]</div>
+            <div class="option" data-value="C">C. [3, 4, 5]</div>
+            <div class="option" data-value="D">D. [1, 2, 3, 2]</div>
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
+
+
+    <!-- Question 4 -->
+    <div class="question" data-answer="D">
+
+        <h2>4. Which Pandas object represents a two-dimensional labeled table?</h2>
+
+        <div class="options">
+            <div class="option" data-value="A">A. List</div>
+            <div class="option" data-value="B">B. Tuple</div>
+            <div class="option" data-value="C">C. Series</div>
+            <div class="option" data-value="D">D. DataFrame</div>
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
+
+
+    <!-- Question 5 -->
+    <div class="question" data-answer="B">
+
+        <h2>5. Which Pandas operation calculates the average score for each department?</h2>
+
+        <pre><code>df.groupby("department")["score"]._____()</code></pre>
+
+        <div class="options">
+            <div class="option" data-value="A">A. sum</div>
+            <div class="option" data-value="B">B. mean</div>
+            <div class="option" data-value="C">C. max</div>
+            <div class="option" data-value="D">D. count</div>
+        </div>
+
+        <div class="feedback"></div>
+
+    </div>
+
+
+    <div class="score" id="score">
+        Score: 0 / 5
+    </div>
+
+    <button class="reset-btn" id="reset">
+        Reset Quiz
+    </button>
+
+</div>
+
+
+<script>
+
+    const questions = document.querySelectorAll(".question");
+    const scoreDisplay = document.getElementById("score");
+    const resetButton = document.getElementById("reset");
+
+    let score = 0;
+    let answered = 0;
+
+
+    questions.forEach(question => {
+
+        const correctAnswer = question.dataset.answer;
+        const options = question.querySelectorAll(".option");
+        const feedback = question.querySelector(".feedback");
+
+        options.forEach(option => {
+
+            option.addEventListener("click", () => {
+
+                // Prevent answering the same question twice
+                if (question.dataset.answered === "true") {
+                    return;
+                }
+
+                question.dataset.answered = "true";
+                answered++;
+
+                const selected = option.dataset.value;
+
+                // Disable all options
+                options.forEach(item => {
+                    item.classList.add("disabled");
+                });
+
+
+                if (selected === correctAnswer) {
+
+                    option.classList.add("correct");
+
+                    feedback.textContent = "✓ Correct!";
+                    feedback.className = "feedback correct-text";
+
+                    score++;
+
+                } else {
+
+                    option.classList.add("wrong");
+
+                    feedback.textContent = "✗ Wrong!";
+
+                    feedback.className = "feedback wrong-text";
+
+                    // Highlight the correct answer
+                    options.forEach(item => {
+
+                        if (item.dataset.value === correctAnswer) {
+                            item.classList.add("correct");
+                        }
+
+                    });
+
+                }
+
+                updateScore();
+
+            });
+
+        });
+
+    });
+
+
+    function updateScore() {
+
+        scoreDisplay.textContent =
+            `Score: ${score} / ${questions.length}`;
+
+        if (answered === questions.length) {
+
+            if (score === questions.length) {
+                scoreDisplay.textContent =
+                    `Excellent! ${score} / ${questions.length}`;
+            }
+
+            else if (score >= 3) {
+                scoreDisplay.textContent =
+                    `Good job! ${score} / ${questions.length}`;
+            }
+
+            else {
+                scoreDisplay.textContent =
+                    `Keep practicing! ${score} / ${questions.length}`;
+            }
+        }
+    }
+
+
+    resetButton.addEventListener("click", () => {
+
+        score = 0;
+        answered = 0;
+
+        questions.forEach(question => {
+
+            question.dataset.answered = "false";
+
+            const options =
+                question.querySelectorAll(".option");
+
+            const feedback =
+                question.querySelector(".feedback");
+
+            options.forEach(option => {
+
+                option.classList.remove(
+                    "correct",
+                    "wrong",
+                    "disabled"
+                );
+
+            });
+
+            feedback.textContent = "";
+            feedback.className = "feedback";
+
+        });
+
+        updateScore();
+
+    });
+
+</script>
+
+</body>
+</html>
